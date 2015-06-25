@@ -529,14 +529,30 @@ write.table(haplist, "haplist.txt", sep="\t",quote=FALSE, row.names=FALSE,col.na
 }
 
 i <- NULL
-j <- NULL
-k <- NULL
-haplotypes <- NULL  # defining variables used in the for loop below
+m <- 1
 
-for (i in 1:no_haps) {
-j <- sum(as.numeric(haplist[i+1,3:(no_pops+2)])) # summing the total number of haplotype i over all populations
-k <- rep.int((i+1),j) # coding haplotype i as a numeric value
-haplotypes <- c(haplotypes, k) # adding the values for haplotype i to the previous array of haplotypes
+
+#Calculating number of haplotypes in each population and observed diversity
+number_diversity <- matrix("",ncol=no_pops,nrow=3)
+
+for (i in 1:no_pops) {
+number_diversity[3,i] <- 0
+number_diversity[1,i] <- haplist[1,i+2]
+number_diversity[2,i] <- no_haps - sum(haplist[2:no_haps,i+2]==0)
+for (k in 1:no_haps) {# For every haplotype...
+if (haplist[k+1,i+2]!=0) {
+m <- k + 1
+while (m <= no_haps) {
+if (haplist[m+1,i+2]!=0) {
+number_diversity[3,i] <- as.numeric(number_diversity[3,i]) + 2*as.numeric(propdiffs[m+1,k+1])/(as.numeric(number_diversity[2,i])*(as.numeric(number_diversity[2,i])-1))
+# For every other haplotype in population j, multiplying the proportion of differences between the haplotypes
+# by the frequency of those haplotypes in population j. 
+# Adding this to the value calculated for other haplotypes.
+}
+m <- m + 1
+}
+}
+}
 }
 
-total_no_samples <- length(haplotypes)
+
