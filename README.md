@@ -1,4 +1,4 @@
-# divergent_allele_test
+# divergent_allele_test v0.0.0 [i.e. use at your own risk]
 Are the combination of alleles in your population the most divergent you could get out of the alleles in the total meta-population?
 
 #How it works#
@@ -15,7 +15,7 @@ This R script calculates nucleotide diversity for all combinations of alleles in
 
 4) It counts indels as a state for the calculation of nucleotide diversity (so make sure sequences of different lengths are 'padded' by missing data, not dashes).
 
-5) If there are haplotypes/alleles that do not reciprocally match (i.e. a haplotype/allele with missing data can match to more than one haplotype/allele, and the haplotypes/alleles it matches to do not match to each other), the program will identify the haplotype/allele with the largest amount of missing data. In most cases this will be the culprit, but a better idea is to make sure all of your haplotypes/alleles are unique before running this program.
+5) If there are haplotypes/alleles that do not reciprocally match (i.e. a haplotype/allele with missing data can match to more than one haplotype/allele, and the haplotypes/alleles it matches to do not match to each other... I'm just going to use the word 'haplotype' from here on out...), the program will identify the haplotype with the largest amount of missing data. In most cases this will be the culprit, but a better idea is to make sure all of your haplotypes/alleles are unique before running this program.
 
 6) Nucleotide diversity will differ slightly from arlequin if there is missing data, as divergent_allele_test calculates the proportional difference between haplotypes only based on non-missing data, whereas arlequin averages the differences over the entire length of alignment to calculate proportional differences.
 
@@ -23,12 +23,12 @@ This R script calculates nucleotide diversity for all combinations of alleles in
 
 8) The program can handle spaces and tabs (or a mixture of these) as delimiters in your arlequin file. However, make sure that closing braces i.e. "}" do not occur on the same line as your data. This might give you a weird non-specific error.
 
-If arlequin can accept the file, and genetic_diversity_diffs can't, then email alana dot alexander at ku dot edu. If you are having trouble with arlequin, make sure your hyphens haven't been made into em-dashes by word.
+If arlequin can accept the file, and divergent_allele_test can't, then email alana dot alexander at ku dot edu. If you are having trouble with arlequin, make sure your hyphens haven't been made into em-dashes by word.
 How to run it
 
 The easiest way for people less familiar with R, is to paste the entire function into R. You can then call the function by:
 
-genetic_diversity_diffs(working_dir,file_name,n_iter,test_for_hap,test_for_nucl)
+divergent_allele_test(working_dir,file_name)
 
 where:
 
@@ -36,24 +36,16 @@ working_dir == pathway to the folder with your arlequin file e.g. "C:/blahblahbl
 
 file_name == the name of your arlequin file (in haplotype list format) e.g. "data.txt"
 
-n_iter == the number of iterations you wish to perform e.g. 1000
-
-test_for_hap == "Y"/"N" - do you wish to test for differences in haplotype diversity?
-
-test_for_nucl == "Y"/"N" - do you wish to test for difference in nucleotide diversity?
-Example of input
-
-genetic_diversity_diffs("C:/Users/Folder/","ATL_by_region_394.arp",1000,"Y","Y")
-
 Demo arlequin file "ATL_by_region_394.arp" located in example folder
-Suggested citation
+
+#Suggested citation#
 
 Publishing an overview of testing for differences in genetic diversity is on my to-do-list, but in the meantime, if you use genetic_diversity_diffs, please cite it using the following:
 
-Alexander, A. 2015. genetic_diversity_diffs v1.0.0. Available from https://github.com/laninsky/genetic_diversity_diffs
-Version history
+Alexander, A. 2015. divergent_allele_test v0.0.0. Available from https://github.com/laninsky/genetic_diversity_diffs
 
-1.0.1: made the output tables a little prettier for opening in excel
+#Version history#
 
+TBD
 
 
