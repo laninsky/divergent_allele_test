@@ -1,9 +1,9 @@
 # divergent_allele_test v0.0.0 [i.e. use at your own risk]
-Are the combination of alleles in your population the most divergent you could get out of the alleles in the total meta-population?
+Are the combination of alleles in your population the most divergent you could get out of all the alleles in the total meta-population?
 
 #How it works#
 
-This R script calculates nucleotide diversity for all combinations of alleles in your metapopulation for the number of alleles observed in your actual population. It then tells you whether your observed alleles are as diverse as could be expected given the metapopulation alleles.
+This R script calculates nucleotide diversity for all combinations of alleles in your metapopulation (for the number of alleles observed in your actual population). It then tells you whether your observed alleles are as diverse as could be expected given the metapopulation alleles. E.g. if your population has three alleles (present at differing frequencies), are those three alleles the most diverse combination you could "get" from the metapopulation?
 
 #Things to note#
 
