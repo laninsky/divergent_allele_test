@@ -533,12 +533,12 @@ m <- 1
 
 
 #Calculating number of haplotypes in each population and observed diversity
-number_diversity <- matrix("",ncol=no_pops,nrow=3)
+number_diversity <- matrix("",ncol=no_pops,nrow=6)
 
 for (i in 1:no_pops) {
 number_diversity[3,i] <- 0
 number_diversity[1,i] <- haplist[1,i+2]
-number_diversity[2,i] <- no_haps - sum(haplist[2:no_haps,i+2]==0)
+number_diversity[2,i] <- no_haps - sum(haplist[1:(no_haps+1),i+2]==0)
 for (k in 1:no_haps) {# For every haplotype...
 if (haplist[k+1,i+2]!=0) {
 m <- k + 1
@@ -555,4 +555,38 @@ m <- m + 1
 }
 }
 
+for (j in 2:(no_haps+1)) {
+propdiffs[j,j] <- 0
+}
 
+
+if(sum(as.numeric(number_diversity[2,1:no_pops])==1)>0) {
+for (x in 1:no_pops) {
+if(number_diversity[2,x]==1) {
+number_diversity[4,x] <- 0
+number_diversity[6,x] <- 0
+number_diversity[5,x] <- no_hap
+}
+}
+}
+
+if(sum(as.numeric(number_diversity[2,1:no_pops])==2)>0) {
+for (x in 1:no_pops) {
+if(number_diversity[2,x]==2) {
+number_diversity[4,x] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])>as.numeric(number_diversity[3,x]),na.rm=TRUE)
+number_diversity[6,x] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])==as.numeric(number_diversity[3,x]),na.rm=TRUE)
+number_diversity[5,x] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])<as.numeric(number_diversity[3,x]),na.rm=TRUE)
+}
+}
+}
+
+
+for (x in 3:no_haps) {
+if(sum(as.numeric(number_diversity[2,1:no_pops])==x)>0){
+
+
+
+
+
+rownames <- as.matrix(c("pop","no_of_haps","obs_div","%_combinations_>_obs_div","%_combinations_==_obs_div","%_combinations_<_obs_div"))
+number_diversity <- cbind(rownames,number_diversity)
