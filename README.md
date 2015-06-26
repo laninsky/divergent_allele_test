@@ -1,4 +1,4 @@
-# divergent_allele_test v0.0.0 [i.e. use at your own risk]
+# divergent_allele_test v0.0.0 [i.e. still in the process of coding it]
 Are the combination of alleles in your population the most divergent you could get out of all the alleles in the total meta-population?
 
 #How it works#
