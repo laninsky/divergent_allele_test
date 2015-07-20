@@ -548,12 +548,30 @@ number_diversity[3,i] <- as.numeric(number_diversity[3,i]) + 2*as.numeric(propdi
 # For every other haplotype in population j, multiplying the proportion of differences between the haplotypes
 # by the frequency of those haplotypes in population j. 
 # Adding this to the value calculated for other haplotypes.
+# Ala 8.1.3. of Arlequin manual (*2 because not using symmetrical matrix)
 }
 m <- m + 1
 }
 }
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#############UP TO HERE: I'VE FIGURED OUT THE 'ACTUAL' DIVERSITY WHEN SIMPLIFYING TO ONLY ONE OF EACH HAPLOTYPE. NOW NEED TO WORK OUT THEORETICAL MAX
+
+
 
 for (j in 2:(no_haps+1)) {
 propdiffs[j,j] <- 0
