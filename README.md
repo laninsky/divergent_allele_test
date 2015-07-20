@@ -40,9 +40,12 @@ Demo arlequin file "ATL_by_region_394.arp" located in example folder
 
 #Suggested citation#
 
-Publishing an overview of testing for differences in genetic diversity is on my to-do-list, but in the meantime, if you use genetic_diversity_diffs, please cite it using the following:
+This code was first published in:
+TBD
 
-Alexander, A. 2015. divergent_allele_test v0.0.0. Available from https://github.com/laninsky/genetic_diversity_diffs
+If you could cite the pub, and the progam as below, that would be lovely:
+
+Alexander, A. 2015. divergent_allele_test v0.0.0. Available from https://github.com/laninsky/divergent_allele_test
 
 #Version history#
 
