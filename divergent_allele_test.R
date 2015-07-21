@@ -556,6 +556,27 @@ m <- m + 1
 }
 }
 
+# Doing calculations for any pops with just two haplotypes 
+if (any(as.numeric(number_diversity[2,])==2)) {
+for (i in 1:numpop) {
+if (as.numeric(number_diversity[2,i])==2) {
+number_diversity[4,i] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])>as.numeric(number_diversity[3,i]),na.rm=TRUE)
+number_diversity[5,i] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])==as.numeric(number_diversity[3,i]),na.rm=TRUE)
+number_diversity[6,i] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])<as.numeric(number_diversity[3,i]),na.rm=TRUE)
+}
+}
+}
+
+# Doing the calculations for pops with more than one haplotype
+maxhaps <- max(as.numeric(number_diversity[2,]))
+nums <- c(2:(no_haps+1))
+
+for (i in 3:maxhaps) {
+test <- NULL
+result <- NULL
+if (any(as.numeric(number_diversity[2,])==i)) {
+test <- combn(nums,i)
+niter <- dim(test)[2]
 
 
 
