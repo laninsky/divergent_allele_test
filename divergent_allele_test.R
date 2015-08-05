@@ -1,3 +1,6 @@
+working_dir <- "C:/Users/Alana/Dropbox/Hectors MHC/divergent_allele/DQA"
+file_name <- "by_region.arp"
+
 divergent_allele_test <- function(working_dir,file_name) {
 
 # The stringr library is required
@@ -23,7 +26,7 @@ killswitch <- "yes"
 }
 
 if(x==1) {
-cat("Call the program by genetic_diversity_diffs(working_dir,file_name,n_iter,test_for_hap,test_for_nucl), where:\nworking_dir == pathway to the folder with your arlequin file e.g. \"C:/blahblahblah\" \nfile_name == the name of your arlequin file (in haplotype list format) e.g. \"data.txt\"\nn_iter == the number of iterations you wish to perform e.g. 1000\ntest_for_hap == \"Y\"/\"N\" - do you wish to test for differences in haplotype diversity?\ntest_for_nucl == \"Y\"/\"N\" - do you wish to test for difference in nucleotide diversity?\n\nThe program can handle spaces and tabs (or a mixture of these) as delimiters in your arlequin file\nHowever, make sure that closing braces i.e. \"}\" do not occur on the same line as your data. This might give you a weird non-specific error.\n\nExample of input:\ngenetic_diversity_diffs(\"C:/Users/Folder/\",\"ATL_by_region_394.arp\",1000,\"Y\",\"Y\")\n\nSpecific errors/missing inputs:\n")
+cat("Call the program by divergent_allele_test(working_dir,file_name), where:\nworking_dir == pathway to the folder with your arlequin file e.g. \"C:/blahblahblah\" \nfile_name == the name of your arlequin file (in haplotype list format) e.g. \"data.txt\"\n\nThe program can handle spaces and tabs (or a mixture of these) as delimiters in your arlequin file\nHowever, make sure that closing braces i.e. \"}\" do not occur on the same line as your data. This might give you a weird non-specific error.\n\nExample of input:\ndivergent_allele_test(\"C:/Users/Folder/\",\"ATL_by_region_394.arp\")\n\nSpecific errors/missing inputs:\n")
 }
 if(error_one==1) {
 cat("Sorry, I am missing a working directory pathway\nworking_dir == pathway to the folder with your arlequin file e.g. \"C:/blahblahblah\" \n\n")
@@ -573,16 +576,28 @@ nums <- c(2:(no_haps+1))
 
 for (i in 3:maxhaps) {
 test <- NULL
-result <- NULL
 if (any(as.numeric(number_diversity[2,])==i)) {
 test <- combn(nums,i)
 niter <- dim(test)[2]
+result <- matrix(0,ncol=niter,nrow=1)
+
+for (j in 1:niter) {
+for (k in 1:(i-1)) {
+m <- k + 1
+while (m <= i ) {
+result[j] <- result[j] + 2*as.numeric(propdiffs[as.numeric(test[m,j]),as.numeric(test[k,j])])/(i*(i-1))
+m <- m + 1
+}
+}
+}
 
 
+################## Up to here: need to count the combos in results and get this into number_diversity
 
 
+names <- c("Pop","no of haps", "nucl diversity over unique haps", "no of combos > obs diversity","no of combos == obs diversity","no of combos < obs diversity")
 
-
+number_diversity <- cbind(names,number_diversity)
 
 
 
