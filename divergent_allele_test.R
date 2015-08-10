@@ -1,8 +1,3 @@
-working_dir <- "C:/Users/Alana/Dropbox/Hectors MHC/divergent_allele/DQA"
-working_dir <- "C:/Users/a499a400/Dropbox/Hectors MHC/divergent_allele/DQA"
-
-file_name <- "by_region.arp"
-
 divergent_allele_test <- function(working_dir,file_name) {
 
 # The stringr library is required
@@ -218,15 +213,6 @@ print(noquote(""))
 flush.console()
 
 haplist[is.na(haplist)] <- 0
-
-# Error message tested and functioning
-if (dim(haplist)[2] >= 4) {
-print(noquote("Your arlequin file has more than one population, so permutations can be performed"))
-print(noquote(""))
-flush.console()
-} else {
-stop("\n\nYour arlequin file does not appear to contain more than one population, so permutations cannot be performed.\n Please try a file with more than one pop.\n\n")
-}
 
 # Getting some parameters that will be used whether haplotype and/or nucleotide diversity is being tested
 i <- NULL
@@ -604,7 +590,13 @@ number_diversity[6,o] <- sum(as.numeric(as.character(round(as.numeric(result),di
 }
 
 names <- c("Pop","no of haps", "nucl diversity over unique haps", "no of combos > obs diversity","no of combos == obs diversity","no of combos < obs diversity")
-
 number_diversity <- cbind(names,number_diversity)
+
+write.table(number_diversity,"divergent_allele_test.txt",sep="\t",quote=FALSE, row.names=FALSE,col.names=FALSE)
+
+print(noquote("The results of the divergent allele test have been written to:"))
+print("divergent_allele_test.txt")
+print(noquote(""))
+flush.console()
 }
 
