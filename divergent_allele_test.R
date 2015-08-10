@@ -1,4 +1,6 @@
 working_dir <- "C:/Users/Alana/Dropbox/Hectors MHC/divergent_allele/DQA"
+working_dir <- "C:/Users/a499a400/Dropbox/Hectors MHC/divergent_allele/DQA"
+
 file_name <- "by_region.arp"
 
 divergent_allele_test <- function(working_dir,file_name) {
@@ -563,9 +565,9 @@ m <- m + 1
 if (any(as.numeric(number_diversity[2,])==2)) {
 for (i in 1:numpop) {
 if (as.numeric(number_diversity[2,i])==2) {
-number_diversity[4,i] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])>as.numeric(number_diversity[3,i]),na.rm=TRUE)
-number_diversity[5,i] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])==as.numeric(number_diversity[3,i]),na.rm=TRUE)
-number_diversity[6,i] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])<as.numeric(number_diversity[3,i]),na.rm=TRUE)
+number_diversity[4,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=16)))>as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=16))),na.rm=TRUE)
+number_diversity[5,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=16)))==as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=16))),na.rm=TRUE)
+number_diversity[6,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=16)))<as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=16))),na.rm=TRUE)
 }
 }
 }
@@ -591,56 +593,18 @@ m <- m + 1
 }
 }
 
-
-################## Up to here: need to count the combos in results and get this into number_diversity
-
+for (o in 1:numpop) {
+if (as.numeric(number_diversity[2,o])==i) {
+number_diversity[4,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=16)))>(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=16)))),na.rm=TRUE)
+number_diversity[5,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=16)))==(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=16)))),na.rm=TRUE)
+number_diversity[6,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=16)))<(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=16)))),na.rm=TRUE)
+}
+}
+}
+}
 
 names <- c("Pop","no of haps", "nucl diversity over unique haps", "no of combos > obs diversity","no of combos == obs diversity","no of combos < obs diversity")
 
 number_diversity <- cbind(names,number_diversity)
-
-
-
-
-
-
-
-#############UP TO HERE: I'VE FIGURED OUT THE 'ACTUAL' DIVERSITY WHEN SIMPLIFYING TO ONLY ONE OF EACH HAPLOTYPE. NOW NEED TO WORK OUT THEORETICAL MAX
-
-
-
-for (j in 2:(no_haps+1)) {
-propdiffs[j,j] <- 0
 }
 
-
-if(sum(as.numeric(number_diversity[2,1:no_pops])==1)>0) {
-for (x in 1:no_pops) {
-if(number_diversity[2,x]==1) {
-number_diversity[4,x] <- 0
-number_diversity[6,x] <- 0
-number_diversity[5,x] <- no_hap
-}
-}
-}
-
-if(sum(as.numeric(number_diversity[2,1:no_pops])==2)>0) {
-for (x in 1:no_pops) {
-if(number_diversity[2,x]==2) {
-number_diversity[4,x] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])>as.numeric(number_diversity[3,x]),na.rm=TRUE)
-number_diversity[6,x] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])==as.numeric(number_diversity[3,x]),na.rm=TRUE)
-number_diversity[5,x] <- sum(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)])<as.numeric(number_diversity[3,x]),na.rm=TRUE)
-}
-}
-}
-
-
-for (x in 3:no_haps) {
-if(sum(as.numeric(number_diversity[2,1:no_pops])==x)>0){
-
-
-
-
-
-rownames <- as.matrix(c("pop","no_of_haps","obs_div","%_combinations_>_obs_div","%_combinations_==_obs_div","%_combinations_<_obs_div"))
-number_diversity <- cbind(rownames,number_diversity)
