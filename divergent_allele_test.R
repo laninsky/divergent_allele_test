@@ -551,9 +551,9 @@ m <- m + 1
 if (any(as.numeric(number_diversity[2,])==2)) {
 for (i in 1:numpop) {
 if (as.numeric(number_diversity[2,i])==2) {
-number_diversity[4,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=16)))>as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=16))),na.rm=TRUE)
-number_diversity[5,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=16)))==as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=16))),na.rm=TRUE)
-number_diversity[6,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=16)))<as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=16))),na.rm=TRUE)
+number_diversity[4,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=10)))>as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=10))),na.rm=TRUE)
+number_diversity[5,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=10)))==as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=10))),na.rm=TRUE)
+number_diversity[6,i] <- sum(as.numeric(as.character(round(as.numeric(propdiffs[2:(no_haps+1),2:(no_haps+1)]),digits=10)))<as.numeric(as.character(round(as.numeric(number_diversity[3,i]),digits=10))),na.rm=TRUE)
 }
 }
 }
@@ -581,9 +581,9 @@ m <- m + 1
 
 for (o in 1:numpop) {
 if (as.numeric(number_diversity[2,o])==i) {
-number_diversity[4,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=16)))>(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=16)))),na.rm=TRUE)
-number_diversity[5,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=16)))==(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=16)))),na.rm=TRUE)
-number_diversity[6,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=16)))<(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=16)))),na.rm=TRUE)
+number_diversity[4,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=10)))>(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=10)))),na.rm=TRUE)
+number_diversity[5,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=10)))==(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=10)))),na.rm=TRUE)
+number_diversity[6,o] <- sum(as.numeric(as.character(round(as.numeric(result),digits=10)))<(as.numeric(as.character(round(as.numeric(number_diversity[3,o]),digits=10)))),na.rm=TRUE)
 }
 }
 }
