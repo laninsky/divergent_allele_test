@@ -1,9 +1,9 @@
-# divergent_allele_test v0.0.0 [i.e. still in the process of coding it]
+# divergent_allele_test v1.0.0
 Are the combination of alleles in your population the most divergent you could get out of all the alleles in the total meta-population?
 
 #How it works#
 
-This R script calculates nucleotide diversity for all combinations of alleles in your metapopulation (for the number of alleles observed in your actual population). It then tells you whether your observed alleles are as diverse as could be expected given the metapopulation alleles. E.g. if your population has three alleles (present at differing frequencies), are those three alleles the most diverse combination you could "get" from the metapopulation?
+This R script calculates nucleotide diversity for all unique combinations of alleles in your metapopulation (for the number of alleles observed in your actual population). It then tells you whether your observed alleles are as diverse as could be expected given the metapopulation alleles. E.g. if your population has three alleles, are those three alleles the most diverse combination you could "get" from the metapopulation?
 
 #Things to note#
 
@@ -22,6 +22,8 @@ This R script calculates nucleotide diversity for all combinations of alleles in
 7) Nucleotide diversity will also differ slightly between the programs if there are indels, because Arlequin only counts indels as part of the haplotype alignment length if they are variable within the population in question, and divergent_allele_test counts them as part of the length if they are variable across all haplotype definitions (over all of your populations).
 
 8) The program can handle spaces and tabs (or a mixture of these) as delimiters in your arlequin file. However, make sure that closing braces i.e. "}" do not occur on the same line as your data. This might give you a weird non-specific error.
+
+9) For comparisons of diversity, the program uses only 10 decimal points due to floating point issues.
 
 If arlequin can accept the file, and divergent_allele_test can't, then email alana dot alexander at ku dot edu. If you are having trouble with arlequin, make sure your hyphens haven't been made into em-dashes by word.
 How to run it
@@ -45,10 +47,10 @@ TBD
 
 If you could cite the pub, and the progam as below, that would be lovely:
 
-Alexander, A. 2015. divergent_allele_test v0.0.0. Available from https://github.com/laninsky/divergent_allele_test
+Alexander, A. 2015. divergent_allele_test v1.0.0. Available from https://github.com/laninsky/divergent_allele_test
 
 #Version history#
 
-TBD
+v1.0.0: ready to rock 'n' roll
 
 
