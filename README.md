@@ -49,6 +49,10 @@ If you could cite the pub, and the progam as below, that would be lovely:
 
 Alexander, A. 2015. divergent_allele_test v1.0.0. Available from https://github.com/laninsky/divergent_allele_test
 
+This pipeline also wouldn't be possible without:
+
+R: R Core Team. 2015. R: A language and environment for statistical computing. URL http://www.R-project.org/. R Foundation for Statistical Computing, Vienna, Austria. https://www.r-project.org/
+
 #Version history#
 
 v1.0.0: ready to rock 'n' roll
