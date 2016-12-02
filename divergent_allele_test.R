@@ -149,7 +149,7 @@ stop("Please rename the multiple haplotype definitions that have the above name 
 minhaplength <- min(nchar(haplist[2:haplistlength,2]))
 maxhaplength <- max(nchar(haplist[2:haplistlength,2]))
 
-#Error messages tested and funcitons
+#Error messages tested and functions
 if(minhaplength==maxhaplength) {
    if(all(is.na(haplist[2:haplistlength,2]))) {
 stop("\n\nNo sequence given for haplotypes. Please make sure you have sequence defined for each of your haplotypes in your haplist\n")
@@ -214,7 +214,7 @@ flush.console()
 
 haplist[is.na(haplist)] <- 0
 
-# Getting some parameters that will be used whether haplotype and/or nucleotide diversity is being tested
+# Getting some parameters that will be used
 i <- NULL
 j <- NULL
 k <- NULL
@@ -523,7 +523,7 @@ i <- NULL
 m <- 1
 
 
-#Calculating number of haplotypes in each population and observed diversity
+#Calculating number of haplotypes in each population and observed divergence
 number_diversity <- matrix("",ncol=no_pops,nrow=6)
 
 for (i in 1:no_pops) {
@@ -589,7 +589,7 @@ number_diversity[6,o] <- sum(as.numeric(as.character(round(as.numeric(result),di
 }
 }
 
-names <- c("Pop","no of haps", "nucl diversity over unique haps", "no of combos > obs diversity","no of combos == obs diversity","no of combos < obs diversity")
+names <- c("Pop","no of haps", "av. pariwise divergence over unique haps", "no of combos > obs divergence","no of combos == obs divergence","no of combos < obs divergence")
 number_diversity <- cbind(names,number_diversity)
 
 write.table(number_diversity,"divergent_allele_test.txt",sep="\t",quote=FALSE, row.names=FALSE,col.names=FALSE)
