@@ -1,7 +1,7 @@
 # divergent_allele_test v1.0.1
 Are the combination of alleles in your population the most divergent you could get out of all the alleles in the total meta-population? 
 
-#How it works#
+### How it works
 
 This R script calculates average pairwise distance for all unique combinations of alleles in your metapopulation (for the number of alleles observed in your actual population). It then tells you whether your observed alleles are as divergent as could be expected given the metapopulation alleles. E.g. if your population has three alleles, are those three alleles the most diverse combination you could "get" from the metapopulation?
 
@@ -27,14 +27,14 @@ More mathematically, it compares the divergence of observed unique alleles compa
 
 9) For comparisons of divergence, the program uses only 10 decimal points due to floating point issues.
 
-If arlequin can accept the file, and divergent_allele_test can't, then email alana dot alexander at ku dot edu. If you are having trouble with arlequin, make sure your hyphens haven't been made into em-dashes by word.
+If arlequin can accept the file, and divergent_allele_test can't, then email alana.alexander@otago.ac.nz. If you are having trouble with arlequin, make sure your hyphens haven't been made into em-dashes by word.
 
-How to run it
+### How to run it
 
 The easiest way for people less familiar with R, is to paste the entire function into R. You can then call the function by:
-
+```
 divergent_allele_test(working_dir,file_name)
-
+```
 where:
 
 working_dir == pathway to the folder with your arlequin file e.g. "C:/blahblahblah"
@@ -43,10 +43,10 @@ file_name == the name of your arlequin file (in haplotype list format) e.g. "dat
 
 Demo arlequin file "ATL_by_region_394.arp" located in example folder
 
-#Suggested citation#
+### Suggested citation
 
 This code was first published in:
-TBD
+Heimeier, D., Alexander, A., Hamner, R.M., Pichler, F. and Baker, C.S., 2018. The influence of selection on MHC DQA and DQB haplotypes in the endemic New Zealand Hector’s and Māui dolphins. Journal of Heredity, 109(7), pp.744-756.
 
 If you could cite the pub, and the progam as below, that would be lovely:
 
@@ -59,9 +59,9 @@ R: R Core Team. 2015. R: A language and environment for statistical computing. U
 Stringr:  Hadley Wickham (2012). stringr: Make it easier to work with strings..
   R package version 0.6.2. http://CRAN.R-project.org/package=stringr (for up-to-date citation information run citation("stringr" in R)
 
-#Version history#
+### Version history
 
-v1.0.1: changed language in the readme and R code to reflect we are calculating average pairwise distance over unique alleles (rather than saying nucleotide diversity seeing as this is not a population metric where we expect haplotypes to be identical).
+v1.0.1: changed language in the readme and R code to reflect we are calculating average pairwise distance over unique alleles (rather than saying nucleotide diversity seeing as this is not a population metric where we expect haplotypes to be identical). Version used in Heimeier et al. (2018).
 
 v1.0.0: ready to rock 'n' roll
 
